@@ -1,8 +1,15 @@
+enum LoginError { none, incorrectCredentials }
+
 class LoginState {
   final String email;
   final String password;
+  final LoginError error;
 
-  LoginState(this.email, this.password);
+  LoginState(
+    this.email,
+    this.password, {
+    this.error = LoginError.none,
+  });
 
   bool get isEmailValid {
     final emailRegex = RegExp(
@@ -20,5 +27,6 @@ class LoginState {
   List<Object> get props => [
         email,
         password,
+        error,
       ];
 }

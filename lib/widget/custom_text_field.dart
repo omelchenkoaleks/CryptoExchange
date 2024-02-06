@@ -7,12 +7,14 @@ class CustomTextField extends StatefulWidget {
   final String title;
   final String hintText;
   final Function onChanged;
+  final bool isValid;
 
   const CustomTextField({
     super.key,
     required this.title,
     required this.hintText,
     required this.onChanged,
+    this.isValid = true,
   });
 
   @override
@@ -31,6 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        border: widget.isValid ? null : Border.all(color: ColorsApp.red),
         color: ColorsApp.grey400,
         borderRadius: BorderRadius.circular(Sizes.p8),
       ),
@@ -42,9 +45,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
             gapH8,
             Text(
               widget.title,
-              style: TextStyleSource.style12medium.copyWith(
-                color: isTextTyped ? ColorsApp.grey200 : ColorsApp.textGrey,
-              ),
+              style: widget.isValid
+                  ? TextStyleSource.style12medium.copyWith(
+                      color:
+                          isTextTyped ? ColorsApp.grey200 : ColorsApp.textGrey)
+                  : TextStyleSource.style12medium
+                      .copyWith(color: ColorsApp.red),
             ),
             gapH4,
             TextField(

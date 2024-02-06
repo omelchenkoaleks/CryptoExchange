@@ -8,6 +8,10 @@ import 'package:crypto_exchange/widget/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// TODO: Data for testing TextFiels errors
+const String fakeEmail = 'omko@gmail.com';
+const String fakePassword = '1234Omko';
+
 class LoginPage extends StatelessWidget {
   static const path = '/login';
 
@@ -45,6 +49,8 @@ class LoginPage extends StatelessWidget {
                         CustomTextField(
                           title: 'Email',
                           hintText: 'Enter your email',
+                          isValid:
+                              state.error != LoginError.incorrectCredentials,
                           onChanged: (text) {
                             context.read<LoginCubit>().setEmail(text);
                           },
@@ -53,9 +59,22 @@ class LoginPage extends StatelessWidget {
                         CustomTextField(
                           title: 'Password',
                           hintText: 'Enter your password',
+                          isValid:
+                              state.error != LoginError.incorrectCredentials,
                           onChanged: (text) {
                             context.read<LoginCubit>().setPassword(text);
                           },
+                        ),
+                        gapH8,
+                        Visibility(
+                          visible:
+                              state.error == LoginError.incorrectCredentials,
+                          child: Text(
+                            'Incorrect login or password. Check the data and try again',
+                            style: TextStyleSource.style16regular.copyWith(
+                              color: ColorsApp.red,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -82,7 +101,19 @@ class LoginPage extends StatelessWidget {
                       colorText: state.isFieldValid
                           ? ColorsApp.grey400
                           : ColorsApp.white,
-                      onTap: () {},
+                      onTap: () {
+                        debugPrint(
+                            '${state.email} <<<<< Email, ${state.password} <<<<< Password ====== $fakeEmail and $fakePassword');
+                        if (state.email == fakeEmail &&
+                            state.password == fakePassword) {
+                          debugPrint(
+                              '>>>>>>>>>> Correct email and password <<<<<<<<<');
+                        } else {
+                          context
+                              .read<LoginCubit>()
+                              .setError(LoginError.incorrectCredentials);
+                        }
+                      },
                     ),
                   ),
                   Padding(

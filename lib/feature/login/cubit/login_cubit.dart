@@ -11,4 +11,12 @@ class LoginCubit extends Cubit<LoginState> {
   void setPassword(String password) {
     emit(LoginState(state.email, password));
   }
+
+  void setError(LoginError error) {
+    emit(LoginState(
+      state.email,
+      state.password,
+      error: error,
+    ));
+  }
 }
