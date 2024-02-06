@@ -10,18 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class VerificationPage extends StatefulWidget {
+class VerificationPage extends StatelessWidget {
   static const path = '/';
 
   const VerificationPage({super.key});
-
-  @override
-  State<VerificationPage> createState() => _VerificationPageState();
-}
-
-class _VerificationPageState extends State<VerificationPage> {
-  final TextEditingController controller = TextEditingController();
-  Color buttonColor = ColorsApp.accent.withOpacity(0.5);
 
   @override
   Widget build(BuildContext context) {
@@ -50,15 +42,15 @@ class _VerificationPageState extends State<VerificationPage> {
                   ),
                   gapH32,
                   CustomTextField(
-                    controller: controller,
                     title: 'Email',
                     hintText: 'Enter your email',
                     onChanged: (text) {
-                      setState(() {
-                        buttonColor = text.isNotEmpty
-                            ? ColorsApp.accent
-                            : ColorsApp.accent.withOpacity(0.5);
-                      });
+                      context.read<VerificationCubit>().setEmail(text);
+                      // setState(() {
+                      // buttonColor = text.isNotEmpty
+                      //     ? ColorsApp.accent
+                      //     : ColorsApp.accent.withOpacity(0.5);
+                      // });
                     },
                   ),
                 ],
@@ -67,7 +59,9 @@ class _VerificationPageState extends State<VerificationPage> {
                 children: [
                   PrimaryButton(
                     title: 'Continue',
-                    colorButton: buttonColor,
+                    colorButton: state.isEmailValid
+                        ? ColorsApp.accent
+                        : ColorsApp.accent.withOpacity(0.5),
                     onTap: () {
                       context.go(LoginPage.path);
                     },

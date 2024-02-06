@@ -15,8 +15,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
   Color buttonColor = ColorsApp.grey200;
   Color textColor = ColorsApp.white;
 
@@ -49,7 +47,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       gapH32,
                       CustomTextField(
-                        controller: emailController,
                         title: 'Email',
                         hintText: 'Enter your email',
                         onChanged: (text) {
@@ -65,7 +62,6 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       gapH16,
                       CustomTextField(
-                        controller: passwordController,
                         title: 'Password',
                         hintText: 'Enter your password',
                         onChanged: (text) {

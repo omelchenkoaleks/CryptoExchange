@@ -7,14 +7,12 @@ class CustomTextField extends StatefulWidget {
   final String title;
   final String hintText;
   final Function onChanged;
-  final TextEditingController controller;
 
   const CustomTextField({
     super.key,
     required this.title,
     required this.hintText,
     required this.onChanged,
-    required this.controller,
   });
 
   @override
@@ -50,7 +48,6 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             gapH4,
             TextField(
-              controller: widget.controller,
               cursorColor: ColorsApp.grey100,
               style: const TextStyle(color: ColorsApp.grey100),
               decoration: InputDecoration.collapsed(
