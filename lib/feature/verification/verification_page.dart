@@ -1,19 +1,22 @@
+import 'package:crypto_exchange/feature/login/login_page.dart';
 import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:crypto_exchange/utility/sizes_app.dart';
+import 'package:crypto_exchange/utility/text_style_source.dart';
 import 'package:crypto_exchange/widget/custom_text_field.dart';
 import 'package:crypto_exchange/widget/primary_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class HomePage extends StatefulWidget {
+class VerificationPage extends StatefulWidget {
   static const path = '/';
 
-  const HomePage({super.key});
+  const VerificationPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<VerificationPage> createState() => _VerificationPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _VerificationPageState extends State<VerificationPage> {
   final TextEditingController controller = TextEditingController();
   Color buttonColor = ColorsApp.accent.withOpacity(0.5);
 
@@ -34,9 +37,9 @@ class _HomePageState extends State<HomePage> {
             Column(
               children: [
                 gapH16,
-                const Text(
-                  'Для завершення верифікації вам необхідно вказати актуально пошту',
-                  style: TextStyle(
+                Text(
+                  'To complete the verification, you need to provide the following email address',
+                  style: TextStyleSource.style16regular.copyWith(
                     color: ColorsApp.grey100,
                   ),
                 ),
@@ -60,9 +63,11 @@ class _HomePageState extends State<HomePage> {
                 PrimaryButton(
                   title: 'Continue',
                   colorButton: buttonColor,
-                  onTap: () {},
+                  onTap: () {
+                    context.go(LoginPage.path);
+                  },
                 ),
-                const SizedBox(height: 24),
+                gapH24,
               ],
             ),
           ],

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class ColorsApp {
   static const background = Color(0xFF1A1B1D);
+  static const transparent = Color(0x00000000);
   static const black = Color(0xFF000000);
   static const white = Color(0xFFFFFFFF);
   static const blue = Color(0xFF3964DA);

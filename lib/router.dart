@@ -1,17 +1,17 @@
-import 'package:crypto_exchange/feature/action/action_page.dart';
-import 'package:crypto_exchange/feature/home/home_page.dart';
+import 'package:crypto_exchange/feature/login/login_page.dart';
+import 'package:crypto_exchange/feature/verification/verification_page.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: HomePage.path,
+  initialLocation: VerificationPage.path,
   routes: [
     GoRoute(
-      path: HomePage.path,
-      builder: (context, state) => HomePage(),
+      path: VerificationPage.path,
+      builder: (context, state) => const VerificationPage(),
     ),
     GoRoute(
-      path: ActionPage.path,
-      builder: (context, state) => const ActionPage(),
+      path: LoginPage.path,
+      builder: (context, state) => const LoginPage(),
     ),
   ],
 );

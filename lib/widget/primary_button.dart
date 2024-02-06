@@ -8,6 +8,8 @@ enum ButtonStatus { enabled, loading }
 class PrimaryButton extends StatelessWidget {
   final String title;
   final Color colorButton;
+  final Color colorText;
+  final double elevation;
   final Function onTap;
   final bool isEnabled;
   final ButtonStatus buttonStatus;
@@ -17,6 +19,8 @@ class PrimaryButton extends StatelessWidget {
     required this.title,
     required this.onTap,
     this.colorButton = ColorsApp.accent,
+    this.colorText = ColorsApp.grey400,
+    this.elevation = 2.0,
     this.isEnabled = true,
     this.buttonStatus = ButtonStatus.enabled,
   });
@@ -28,8 +32,9 @@ class PrimaryButton extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
+          elevation: elevation,
           backgroundColor: colorButton,
-          foregroundColor: ColorsApp.grey400,
+          foregroundColor: colorText,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Sizes.p8),
           ),
