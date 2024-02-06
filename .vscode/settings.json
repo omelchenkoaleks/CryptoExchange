@@ -1,0 +1,8 @@
+{
+    "fluttergpt.apiKey": "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",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "editor.formatOnSave": true,
+}
