@@ -1,7 +1,9 @@
+import 'package:crypto_exchange/feature/verification/cubit/verification_cubit.dart';
 import 'package:crypto_exchange/router.dart';
 import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
@@ -17,12 +19,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        scaffoldBackgroundColor: ColorsApp.background,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => VerificationCubit(),
+        )
+      ],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          scaffoldBackgroundColor: ColorsApp.background,
+        ),
+        routerConfig: router,
       ),
-      routerConfig: router,
     );
   }
 }

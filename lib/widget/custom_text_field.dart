@@ -37,22 +37,23 @@ class _CustomTextFieldState extends State<CustomTextField> {
         borderRadius: BorderRadius.circular(Sizes.p8),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Sizes.p16),
+        padding: const EdgeInsets.symmetric(horizontal: Sizes.p12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            gapH12,
+            gapH8,
             Text(
               widget.title,
               style: TextStyleSource.style12medium.copyWith(
                 color: isTextTyped ? ColorsApp.grey200 : ColorsApp.textGrey,
               ),
             ),
+            gapH4,
             TextField(
               controller: widget.controller,
               cursorColor: ColorsApp.grey100,
               style: const TextStyle(color: ColorsApp.grey100),
-              decoration: InputDecoration(
+              decoration: InputDecoration.collapsed(
                 border: InputBorder.none,
                 hintText: widget.hintText,
                 hintStyle: TextStyleSource.style16regular.copyWith(
@@ -66,6 +67,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 widget.onChanged(value);
               },
             ),
+            gapH8,
           ],
         ),
       ),
