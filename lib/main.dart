@@ -1,3 +1,4 @@
+import 'package:crypto_exchange/feature/login/cubit/login_cubit.dart';
 import 'package:crypto_exchange/feature/verification/cubit/verification_cubit.dart';
 import 'package:crypto_exchange/router.dart';
 import 'package:crypto_exchange/utility/colors_app.dart';
@@ -23,7 +24,10 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => VerificationCubit(),
-        )
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

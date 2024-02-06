@@ -46,11 +46,6 @@ class VerificationPage extends StatelessWidget {
                     hintText: 'Enter your email',
                     onChanged: (text) {
                       context.read<VerificationCubit>().setEmail(text);
-                      // setState(() {
-                      // buttonColor = text.isNotEmpty
-                      //     ? ColorsApp.accent
-                      //     : ColorsApp.accent.withOpacity(0.5);
-                      // });
                     },
                   ),
                 ],
