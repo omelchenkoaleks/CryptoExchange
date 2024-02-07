@@ -59,7 +59,7 @@ class VerificationPage extends StatelessWidget {
                         ? ColorsApp.accent
                         : ColorsApp.accent.withOpacity(0.5),
                     onTap: () {
-                      context.go(LoginPage.path);
+                      context.push(LoginPage.path);
                     },
                   ),
                   gapH24,

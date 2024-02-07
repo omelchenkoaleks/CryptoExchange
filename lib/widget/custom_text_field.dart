@@ -2,7 +2,7 @@ import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:crypto_exchange/utility/image_source.dart';
 import 'package:crypto_exchange/utility/sizes_app.dart';
 import 'package:crypto_exchange/utility/text_style_source.dart';
-import 'package:crypto_exchange/widget/custom_icon_button.dart';
+import 'package:crypto_exchange/widget/custom_image_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -91,7 +91,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             Visibility(
               visible: widget.textInputType == TextInputType.text,
-              child: CustomIconButton(
+              child: CustomImageButton(
                 onTap: () {
                   setState(() {
                     _isObscure = !_isObscure;

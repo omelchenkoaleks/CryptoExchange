@@ -2,11 +2,11 @@ import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CustomIconButton extends StatelessWidget {
+class CustomImageButton extends StatelessWidget {
   final String imagePath;
   final Function onTap;
 
-  const CustomIconButton({
+  const CustomImageButton({
     super.key,
     required this.imagePath,
     required this.onTap,
