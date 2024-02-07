@@ -49,6 +49,7 @@ class LoginPage extends StatelessWidget {
                         CustomTextField(
                           title: 'Email',
                           hintText: 'Enter your email',
+                          textInputType: TextInputType.emailAddress,
                           isValid:
                               state.error != LoginError.incorrectCredentials,
                           onChanged: (text) {
@@ -59,6 +60,7 @@ class LoginPage extends StatelessWidget {
                         CustomTextField(
                           title: 'Password',
                           hintText: 'Enter your password',
+                          textInputType: TextInputType.text,
                           isValid:
                               state.error != LoginError.incorrectCredentials,
                           onChanged: (text) {

@@ -44,6 +44,7 @@ class VerificationPage extends StatelessWidget {
                   CustomTextField(
                     title: 'Email',
                     hintText: 'Enter your email',
+                    textInputType: TextInputType.emailAddress,
                     onChanged: (text) {
                       context.read<VerificationCubit>().setEmail(text);
                     },

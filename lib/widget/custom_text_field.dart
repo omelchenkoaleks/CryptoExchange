@@ -7,6 +7,7 @@ class CustomTextField extends StatefulWidget {
   final String title;
   final String hintText;
   final Function onChanged;
+  final TextInputType textInputType;
   final bool isValid;
 
   const CustomTextField({
@@ -14,6 +15,7 @@ class CustomTextField extends StatefulWidget {
     required this.title,
     required this.hintText,
     required this.onChanged,
+    this.textInputType = TextInputType.text,
     this.isValid = true,
   });
 
@@ -22,7 +24,8 @@ class CustomTextField extends StatefulWidget {
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  bool isTextTyped = false;
+  bool _isTextTyped = false;
+  bool _isObscure = true;
 
   @override
   void initState() {
@@ -39,38 +42,68 @@ class _CustomTextFieldState extends State<CustomTextField> {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: Sizes.p12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
           children: [
-            gapH8,
-            Text(
-              widget.title,
-              style: widget.isValid
-                  ? TextStyleSource.style12medium.copyWith(
-                      color:
-                          isTextTyped ? ColorsApp.grey200 : ColorsApp.textGrey)
-                  : TextStyleSource.style12medium
-                      .copyWith(color: ColorsApp.red),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  gapH8,
+                  Text(
+                    widget.title,
+                    style: widget.isValid
+                        ? TextStyleSource.style12medium.copyWith(
+                            color: _isTextTyped
+                                ? ColorsApp.grey200
+                                : ColorsApp.textGrey)
+                        : TextStyleSource.style12medium
+                            .copyWith(color: ColorsApp.red),
+                  ),
+                  gapH4,
+                  TextField(
+                    cursorColor: ColorsApp.grey100,
+                    style: const TextStyle(color: ColorsApp.grey100),
+                    keyboardType: widget.textInputType,
+                    obscureText: widget.textInputType == TextInputType.text
+                        ? _isObscure
+                        : false,
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.zero,
+                      isDense: true,
+                      border: InputBorder.none,
+                      hintText: widget.hintText,
+                      hintStyle: TextStyleSource.style16regular.copyWith(
+                        color: ColorsApp.textGrey,
+                      ),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _isTextTyped = value.isNotEmpty;
+                      });
+                      widget.onChanged(value);
+                    },
+                  ),
+                  gapH8,
+                ],
+              ),
             ),
-            gapH4,
-            TextField(
-              cursorColor: ColorsApp.grey100,
-              style: const TextStyle(color: ColorsApp.grey100),
-              decoration: InputDecoration.collapsed(
-                border: InputBorder.none,
-                hintText: widget.hintText,
-                hintStyle: TextStyleSource.style16regular.copyWith(
-                  color: ColorsApp.textGrey,
+            Visibility(
+              visible: widget.textInputType == TextInputType.text,
+              child: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _isObscure = !_isObscure;
+                  });
+                },
+                visualDensity: const VisualDensity(horizontal: -4),
+                padding: EdgeInsets.zero,
+                icon: Icon(
+                  _isObscure ? Icons.visibility_off : Icons.visibility,
+                  color: ColorsApp.accent,
                 ),
               ),
-              onChanged: (value) {
-                setState(() {
-                  isTextTyped = value.isNotEmpty;
-                });
-                widget.onChanged(value);
-              },
             ),
-            gapH8,
+            // SvgPicture.asset(ImageSVGApp.hiddenPassword),
           ],
         ),
       ),
