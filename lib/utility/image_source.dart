@@ -1,3 +1,4 @@
 class ImageSVGApp {
-  static const hiddenPassword = 'assets/svg/hidden_password.svg';
+  static const visibility = 'assets/svg/visibility.svg';
+  static const visibilityOff = 'assets/svg/visibility_off.svg';
 }

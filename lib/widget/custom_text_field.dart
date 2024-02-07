@@ -1,6 +1,8 @@
 import 'package:crypto_exchange/utility/colors_app.dart';
+import 'package:crypto_exchange/utility/image_source.dart';
 import 'package:crypto_exchange/utility/sizes_app.dart';
 import 'package:crypto_exchange/utility/text_style_source.dart';
+import 'package:crypto_exchange/widget/custom_icon_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatefulWidget {
@@ -89,18 +91,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
             ),
             Visibility(
               visible: widget.textInputType == TextInputType.text,
-              child: IconButton(
-                onPressed: () {
+              child: CustomIconButton(
+                onTap: () {
                   setState(() {
                     _isObscure = !_isObscure;
                   });
                 },
-                visualDensity: const VisualDensity(horizontal: -4),
-                padding: EdgeInsets.zero,
-                icon: Icon(
-                  _isObscure ? Icons.visibility_off : Icons.visibility,
-                  color: ColorsApp.accent,
-                ),
+                imagePath: _isObscure
+                    ? ImageSVGApp.visibilityOff
+                    : ImageSVGApp.visibility,
               ),
             ),
             // SvgPicture.asset(ImageSVGApp.hiddenPassword),
