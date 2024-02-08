@@ -57,16 +57,25 @@ class _CustomTextFieldState extends State<CustomTextField> {
                         ? TextStyleSource.style12medium.copyWith(
                             color: _isTextTyped
                                 ? ColorsApp.grey200
-                                : ColorsApp.textGrey)
+                                : ColorsApp.textGrey,
+                          )
                         : TextStyleSource.style12medium
                             .copyWith(color: ColorsApp.red),
                   ),
                   gapH4,
                   TextField(
                     cursorColor: ColorsApp.grey100,
-                    style: const TextStyle(color: ColorsApp.grey100),
+                    style:
+                        widget.textInputType == TextInputType.text && _isObscure
+                            ? TextStyleSource.style10obscuring.copyWith(
+                                color: ColorsApp.grey100,
+                                letterSpacing: 6,
+                              )
+                            : TextStyleSource.style16regular.copyWith(
+                                color: ColorsApp.grey100,
+                              ),
                     keyboardType: widget.textInputType,
-                    obscuringCharacter: '\u25cf',
+                    obscuringCharacter: '\u25CF',
                     obscureText: widget.textInputType == TextInputType.text
                         ? _isObscure
                         : false,
@@ -77,6 +86,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       hintText: widget.hintText,
                       hintStyle: TextStyleSource.style16regular.copyWith(
                         color: ColorsApp.textGrey,
+                        letterSpacing: 0,
                       ),
                     ),
                     onChanged: (value) {
