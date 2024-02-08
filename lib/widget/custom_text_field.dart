@@ -66,6 +66,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     cursorColor: ColorsApp.grey100,
                     style: const TextStyle(color: ColorsApp.grey100),
                     keyboardType: widget.textInputType,
+                    obscuringCharacter: '\u25cf',
                     obscureText: widget.textInputType == TextInputType.text
                         ? _isObscure
                         : false,
