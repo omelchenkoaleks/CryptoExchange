@@ -6,6 +6,7 @@ import 'package:crypto_exchange/utility/text_style_source.dart';
 import 'package:crypto_exchange/widget/app_text_field.dart';
 import 'package:crypto_exchange/widget/arrow_back_button.dart';
 import 'package:crypto_exchange/widget/primary_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +27,7 @@ class LoginPage extends StatelessWidget {
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: AppBar(
-            title: const Text('Login'),
+            title: Text('login'.tr()),
             centerTitle: true,
             backgroundColor: ColorsApp.background,
             foregroundColor: ColorsApp.grey100,
@@ -44,7 +45,8 @@ class LoginPage extends StatelessWidget {
                         children: [
                           gapH16,
                           Text(
-                            'To log in to your account, please enter the information provided by your super administrator',
+                            'to_log_in_to_your_account_please_enter_the_information_provided_by_your_super_administrator'
+                                .tr(),
                             style: TextStyleSource.style16regular.copyWith(
                               color: ColorsApp.grey100,
                             ),

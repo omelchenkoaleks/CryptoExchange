@@ -63,15 +63,6 @@ class VerificationPage extends StatelessWidget {
                     },
                   ),
                   gapH24,
-                  PrimaryButton(
-                    title: 'Continue',
-                    colorButton: state.isEmailValid
-                        ? ColorsApp.accent
-                        : ColorsApp.accent.withOpacity(0.5),
-                    onTap: () {
-                      context.push(LoginPage.path);
-                    },
-                  ),
                 ],
               ),
             ],
