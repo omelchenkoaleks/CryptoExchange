@@ -4,7 +4,7 @@ import 'package:crypto_exchange/feature/verification/cubit/verification_state.da
 import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:crypto_exchange/utility/sizes_app.dart';
 import 'package:crypto_exchange/utility/text_style_source.dart';
-import 'package:crypto_exchange/widget/custom_text_field.dart';
+import 'package:crypto_exchange/widget/app_text_field.dart';
 import 'package:crypto_exchange/widget/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +41,7 @@ class VerificationPage extends StatelessWidget {
                     ),
                   ),
                   gapH32,
-                  CustomTextField(
+                  AppTextField(
                     title: 'Email',
                     hintText: 'Enter your email',
                     textInputType: TextInputType.emailAddress,

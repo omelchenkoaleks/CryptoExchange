@@ -4,11 +4,13 @@ class LoginState {
   final String email;
   final String password;
   final LoginError error;
+  final bool isPasswordHide;
 
   LoginState(
     this.email,
     this.password, {
     this.error = LoginError.none,
+    this.isPasswordHide = true,
   });
 
   bool get isEmailValid {
@@ -28,5 +30,6 @@ class LoginState {
         email,
         password,
         error,
+        isPasswordHide,
       ];
 }

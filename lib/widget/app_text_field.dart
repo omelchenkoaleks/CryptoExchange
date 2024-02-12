@@ -5,34 +5,34 @@ import 'package:crypto_exchange/utility/text_style_source.dart';
 import 'package:crypto_exchange/widget/custom_image_button.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class AppTextField extends StatefulWidget {
   final String title;
   final String hintText;
   final Function onChanged;
   final TextInputType textInputType;
   final bool isValid;
+  final bool isPassword;
+  final bool obscureText;
+  final Function? isObscure;
 
-  const CustomTextField({
+  const AppTextField({
     super.key,
     required this.title,
     required this.hintText,
     required this.onChanged,
+    this.isObscure,
     this.textInputType = TextInputType.text,
     this.isValid = true,
+    this.obscureText = false,
+    this.isPassword = false,
   });
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<AppTextField> createState() => _AppTextFieldState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _AppTextFieldState extends State<AppTextField> {
   bool _isTextTyped = false;
-  bool _isObscure = true;
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,20 +65,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   gapH4,
                   TextField(
                     cursorColor: ColorsApp.grey100,
-                    style:
-                        widget.textInputType == TextInputType.text && _isObscure
-                            ? TextStyleSource.style10obscuring.copyWith(
-                                color: ColorsApp.grey100,
-                                letterSpacing: 6,
-                              )
-                            : TextStyleSource.style16regular.copyWith(
-                                color: ColorsApp.grey100,
-                              ),
+                    style: widget.isPassword && widget.obscureText
+                        ? TextStyleSource.style10obscuring.copyWith(
+                            color: ColorsApp.grey100,
+                            letterSpacing: 6,
+                          )
+                        : TextStyleSource.style16regular.copyWith(
+                            color: ColorsApp.grey100,
+                          ),
                     keyboardType: widget.textInputType,
                     obscuringCharacter: '\u25CF',
-                    obscureText: widget.textInputType == TextInputType.text
-                        ? _isObscure
-                        : false,
+                    obscureText: widget.obscureText,
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.zero,
                       isDense: true,
@@ -101,14 +98,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
               ),
             ),
             Visibility(
-              visible: widget.textInputType == TextInputType.text,
+              visible: widget.isPassword,
               child: CustomImageButton(
                 onTap: () {
-                  setState(() {
-                    _isObscure = !_isObscure;
-                  });
+                  widget.isObscure!();
                 },
-                imagePath: _isObscure
+                imagePath: widget.obscureText
                     ? ImageSVGApp.visibilityOff
                     : ImageSVGApp.visibility,
               ),

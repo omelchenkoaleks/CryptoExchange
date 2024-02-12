@@ -3,8 +3,8 @@ import 'package:crypto_exchange/feature/login/cubit/login_state.dart';
 import 'package:crypto_exchange/utility/colors_app.dart';
 import 'package:crypto_exchange/utility/sizes_app.dart';
 import 'package:crypto_exchange/utility/text_style_source.dart';
+import 'package:crypto_exchange/widget/app_text_field.dart';
 import 'package:crypto_exchange/widget/arrow_back_button.dart';
-import 'package:crypto_exchange/widget/custom_text_field.dart';
 import 'package:crypto_exchange/widget/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,7 +50,7 @@ class LoginPage extends StatelessWidget {
                             ),
                           ),
                           gapH32,
-                          CustomTextField(
+                          AppTextField(
                             title: 'Email',
                             hintText: 'Enter your email',
                             textInputType: TextInputType.emailAddress,
@@ -61,14 +61,20 @@ class LoginPage extends StatelessWidget {
                             },
                           ),
                           gapH16,
-                          CustomTextField(
+                          AppTextField(
                             title: 'Password',
                             hintText: 'Enter your password',
-                            textInputType: TextInputType.text,
-                            isValid:
-                                state.error != LoginError.incorrectCredentials,
                             onChanged: (text) {
                               context.read<LoginCubit>().setPassword(text);
+                            },
+                            isPassword: true,
+                            obscureText: state.isPasswordHide,
+                            isValid:
+                                state.error != LoginError.incorrectCredentials,
+                            isObscure: () {
+                              context
+                                  .read<LoginCubit>()
+                                  .togglePasswordVisibility();
                             },
                           ),
                           gapH8,

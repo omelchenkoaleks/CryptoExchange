@@ -9,14 +9,28 @@ class LoginCubit extends Cubit<LoginState> {
   }
 
   void setPassword(String password) {
-    emit(LoginState(state.email, password));
+    emit(
+      LoginState(
+        state.email,
+        password,
+        isPasswordHide: state.isPasswordHide,
+      ),
+    );
   }
 
   void setError(LoginError error) {
-    emit(LoginState(
-      state.email,
-      state.password,
-      error: error,
-    ));
+    emit(LoginState(state.email, state.password,
+        error: error, isPasswordHide: state.isPasswordHide));
+  }
+
+  void togglePasswordVisibility() {
+    emit(
+      LoginState(
+        state.email,
+        state.password,
+        error: state.error,
+        isPasswordHide: !state.isPasswordHide,
+      ),
+    );
   }
 }
