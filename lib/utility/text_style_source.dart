@@ -1,27 +1,29 @@
-import 'dart:ui';
-
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/material.dart';
 
 class TextStyleSource {
-  static final style10obscuring = GoogleFonts.inter(
+  static const style10obscuring = TextStyle(
+    fontFamily: 'Lato',
     fontSize: 10,
     fontWeight: FontWeight.w600,
     height: 1.2,
   );
 
-  static final style16semibols = GoogleFonts.inter(
+  static const TextStyle style16semibols = TextStyle(
+    fontFamily: 'Lato',
     fontSize: 16,
     fontWeight: FontWeight.w600,
     height: 1.2,
   );
 
-  static final style16regular = GoogleFonts.inter(
+  static const style16regular = TextStyle(
+    fontFamily: 'Lato',
     fontSize: 16,
     fontWeight: FontWeight.normal,
     height: 1.2,
   );
 
-  static final style12medium = GoogleFonts.inter(
+  static const style12medium = TextStyle(
+    fontFamily: 'Lato',
     fontSize: 12,
     fontWeight: FontWeight.w500,
     height: 1.3,

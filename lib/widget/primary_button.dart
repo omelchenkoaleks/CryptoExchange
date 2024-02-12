@@ -34,11 +34,9 @@ class PrimaryButton extends StatelessWidget {
           ),
         ),
         onPressed: () => onTap(),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: TextStyleSource.style16semibols,
-        ),
+        child: Text(title,
+            textAlign: TextAlign.center,
+            style: TextStyleSource.style16semibols),
       ),
     );
   }

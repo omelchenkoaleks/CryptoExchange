@@ -28,3 +28,8 @@ flutter:
   assets:
     - assets/svg/
 
+  fonts:
+    - family: Lato
+      fonts:
+        - asset: assets/font/Lato-Regular.ttf
+        
